@@ -24,15 +24,16 @@
             
             string[] GetNewMass(string[] array)
             {
-                string[] Mass = new string [0];
-                char temp;
+                string[] Mass = Array.Empty<string>();
                 int j = 0;
                 for (int i = 0; i < array.Length; i++)
                 {
-                    // temp = char.Parse(array[i]);
+                    
                     if (array[i].Length < 4)
                     {
+                        Array.Resize(ref Mass, Mass.Length +1);
                         Mass[j] = array[i];
+                        j++;
                     }
 
                 }
@@ -42,7 +43,12 @@
             Console.WriteLine("Введите размер массива: ");
             string[] FirstMass = OriginalMass(int.Parse(Console.ReadLine()));
             Console.WriteLine($"[|{String.Join("| |", FirstMass)}|]");
-            
+            string[] SortedMass = GetNewMass(FirstMass);
+            Console.WriteLine($"[|{String.Join("| |", SortedMass)}|]");
+
+                       
+           
         }
     }
 }
+
